@@ -54,9 +54,21 @@ def isfloat(value):
 def findexp(nstr):
     expn=0;
     if nstr[0]=='1':
-        expn=nstr.find(".")-1    #1111.000110
+        expn=nstr.find(".")-1    #1001.000110
+        allOnes = True
+        for i in range(0, expn):
+            if (nstr[i]==0):
+                allOnes = False
+                break;
+
+
         man = nstr.replace(".", "")
         man=insert(man, ".", 1)
+        if (allOnes):    #1111.101 = 1.101
+            nnstr = nstr
+            nstr="1." + nnstr[expn+2:]
+            man = "0." + nnstr[expn+2:]
+            expn=0
     else:
         if (nstr.find(".")==1):   #0.0001
             expn=-nstr.find("1")+1
@@ -68,12 +80,12 @@ def findexp(nstr):
             print("not sure")
         
     
-    return [man, expn]
+    return [man, expn, nstr]
 
 # return float number with exponent, mentissa and fixpoint expression
 def getconv(n):
     nstr=ff_dec2bin(n)
-    man, exp = findexp(nstr)
+    man, exp, nstr = findexp(nstr)
     
     return man, exp, nstr
 
