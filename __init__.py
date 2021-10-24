@@ -1,1 +1,1 @@
-from .dec2bin import dec2fbin
+from .dec2fbin import dec2fbin
