@@ -56,11 +56,11 @@ def findexp(nstr):
     if nstr[0]=='1':
         expn=nstr.find(".")-1    #1001.000110
         allOnes = True
-        for i in range(0, expn):
-            if (nstr[i]==0):
+        for i in range(0, expn+1):
+
+            if (nstr[i]=='0'):
                 allOnes = False
                 break;
-
 
         man = nstr.replace(".", "")
         man=insert(man, ".", 1)
