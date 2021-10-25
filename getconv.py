@@ -64,18 +64,20 @@ def findexp(nstr):
 
         man = nstr.replace(".", "")
         man=insert(man, ".", 1)
+        """
         if (allOnes):    #1111.101 = 1.101
             nnstr = nstr
             nstr="1." + nnstr[expn+2:]
             man = "0." + nnstr[expn+2:]
             expn=0
+        """
     else:
         if (nstr.find(".")==1):   #0.0001
             expn=-nstr.find("1")+1
             if nstr[-expn+2:]=="":
                 man = "0.0"
             else:
-                man ="0."+nstr[-expn+2:]
+                man ="1."+nstr[-expn+2:]
         else:
             print("not sure")
         
@@ -84,8 +86,15 @@ def findexp(nstr):
 
 # return float number with exponent, mentissa and fixpoint expression
 def getconv(n):
+
     nstr=ff_dec2bin(n)
-    man, exp, nstr = findexp(nstr)
+    
+    if (n<0):
+        nnstr=ff_dec2bin(-n)
+    else:
+        nnstr = nstr    
+    man, exp, _ = findexp(nnstr)
+
     
     return man, exp, nstr
 
