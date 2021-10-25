@@ -12,6 +12,7 @@ To use the class, you can
 >> from dec2fbin import dec2fbin
 >> a=dec2fbin(9.125)
 >> a.fbin
->> a. exponent
+>> a.exponent
 >> a.mantissa
+>> a.sign
 ```
