@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='dec2fbin',
     version='0.0.1',
-    packages=[''],
+    packages=['dec2fbin'],
     install_requires=[
         'bitstring',
     ],
